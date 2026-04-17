@@ -1,47 +1,21 @@
-<div align="center">
+# Document Prototype Design Pattern
 
-  <h1>🧬 <strong>DOCUMENT PROTOTYPE LABORATORY</strong></h1>
-  <p><em>Clone. Customize. Conquer.</em><br>
-  The most <strong>visually stunning</strong> & <strong>perfectly executed</strong> Prototype Design Pattern implementation you'll ever see.</p>
+**Implementation of the Prototype Design Pattern in Java**
 
-  <img src="https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
-  <img src="https://img.shields.io/badge/Design%20Pattern-Prototype-6C5CE7?style=for-the-badge&logo=pattern&logoColor=white" alt="Prototype Pattern">
-  <img src="https://img.shields.io/badge/Status-Production%20Ready-00C48C?style=for-the-badge&logo=rocket&logoColor=white" alt="Ready">
-  <img src="https://img.shields.io/badge/Clones%20Per%20Second-∞-FF6B6B?style=for-the-badge&logo=clonable&logoColor=white" alt="Infinite Clones">
+This repository demonstrates the **Prototype Design Pattern** by implementing the exact class diagram provided in the original task.
 
-  <br><br>
+## 📋 Task Implemented
 
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://via.placeholder.com/1200x300/0A0A2A/FFFFFF?text=🧪+DOCUMENT+CLONING+LAB">
-    <img src="https://via.placeholder.com/1200x300/0A2540/FFFFFF?text=🧪+DOCUMENT+CLONING+LAB" width="100%" alt="Document Cloning Lab Banner">
-  </picture>
+The program creates a **Document Registry** that holds three prototype objects:
+- `PdfDocument`
+- `TextDocument`
+- `SpreadsheetDocument`
 
-  <h3>From one blueprint → infinite perfectly customized documents.<br>
-  <strong>Zero boilerplate. Pure elegance.</strong></h3>
+Instead of using `new` to create each document (which would be expensive in real scenarios), the registry **clones** these prototypes and customizes the clones with specific data.
 
-</div>
+The implementation produces **exactly** the following console output:
 
----
-
-## ✨ Why This Repository Will Blow Your Mind
-
-Most Prototype Pattern examples are boring textbook demos.
-
-**This one feels like a sci-fi lab.**
-
-- Real-world document types (PDF, Text, Spreadsheet)
-- Exact console output matching the challenge
-- Beautiful, clean, production-grade Java code
-- A README so gorgeous you’ll screenshot it
-- Mermaid-powered interactive UML diagram
-
-You don’t just **see** the Prototype Pattern here — you **experience** it.
-
----
-
-## 📺 Live Terminal Demo
-
-```bash
+```
 Creating a PDF Document prototype.          //Executed in the constructor
 Creating a Text Document prototype.         //Executed in the constructor
 Creating a Spreadsheet Document prototype.  //Executed in the constructor
@@ -58,124 +32,44 @@ Type: Spreadsheet, Name: sales_data_q1.xlsx, Rows: 1000, Columns: 20
 Opening PDF Document: summary_report.pdf by Acme Corp (30 pages)
 ```
 
-*Just run the program and watch the magic unfold.*
+## 🧬 Design Pattern Explained
 
----
+The **Prototype Pattern** is used when creating new objects is costly or complex.  
+Instead of creating objects from scratch, we:
+1. Create a set of **prototype** objects once (in the constructor of `DocumentRegistry`)
+2. **Clone** them whenever we need a new instance
+3. Customize only the cloned copy
 
-## 🧬 What is the Prototype Design Pattern?
-
-Instead of `new` every time (expensive object creation), we **clone** an existing prototype.
-
-**Benefits you get here:**
-- ⚡ Lightning-fast object creation
-- 🔄 Independent customization of each clone
-- 🧪 Centralized prototype registry
-- 🛡️ No tight coupling to concrete classes
-
----
-
-## 📐 Architecture (Interactive UML)
-
-```mermaid
-classDiagram
-    class Document {
-        <<interface>>
-        +clone() Document
-        +open()
-        +getType() String
-        +printDetails()
-    }
-
-    class DocumentRegistry {
-        -pdfPrototype : PdfDocument
-        -textDocumentPrototype : TextDocument
-        -spreadsheetPrototype : SpreadsheetDocument
-        +createPdfDocument(...) PdfDocument
-        +createTextDocument(...) TextDocument
-        +createSpreadsheetDocument(...) SpreadsheetDocument
-    }
-
-    class PdfDocument {
-        -fileName : String
-        -author : String
-        -pageCount : int
-    }
-
-    class TextDocument {
-        -filePath : String
-        -encoding : String
-        -wordCount : int
-    }
-
-    class SpreadsheetDocument {
-        -spreadsheetName : String
-        -rowCount : int
-        -columnCount : int
-    }
-
-    Document <|-- PdfDocument
-    Document <|-- TextDocument
-    Document <|-- SpreadsheetDocument
-    DocumentRegistry ..> Document : clones
-    DocumentRegistry --> PdfDocument
-    DocumentRegistry --> TextDocument
-    DocumentRegistry --> SpreadsheetDocument
-```
-
-*Hover over classes in GitHub to explore relationships.*
-
----
-
-## 🚀 Quick Start
-
-### 1. Clone the lab
-```bash
-git clone https://github.com/yourusername/document-prototype-laboratory.git
-cd document-prototype-laboratory
-```
-
-### 2. Compile & Run
-```bash
-javac *.java
-java ProcessedDocument
-```
-
-### 3. Watch the clones come to life
-
----
+**Key Benefits Demonstrated:**
+- Fast object creation through cloning
+- Clean separation between prototype creation and usage
+- Easy extension (adding new document types requires minimal changes)
+- No tight coupling to concrete classes
 
 ## 📁 Project Structure
 
 ```
 document-prototype-laboratory/
-├── ProcessedDocument.java      ← Main entry point
-├── DocumentRegistry.java       ← The cloning factory
-├── Document.java               ← Master interface
+├── ProcessedDocument.java      ← Main class (entry point)
+├── DocumentRegistry.java       ← Manages prototypes and cloning
+├── Document.java               ← Common interface for all documents
 ├── PdfDocument.java
 ├── TextDocument.java
 ├── SpreadsheetDocument.java
-└── README.md                   ← You are here ✨
+└── README.md
 ```
 
----
+## 🚀 How to Run
 
-## 🛠️ How to Extend (Super Easy)
+```bash
+javac *.java
+java ProcessedDocument
+```
 
-Want a new document type? Just:
-
-1. Create `NewDocumentType.java` implementing `Document`
-2. Add prototype creation in `DocumentRegistry` constructor
-3. Add `createNewDocumentType(...)` method
-
-**That’s it.** No other files need changing.
+The program will display the exact output shown above.
 
 ---
 
-<div align="center">
-
-  <h3>Made with passion for clean code and beautiful documentation.</h3>
-  <p><strong>⭐ Star this repo if it cloned your heart ❤️</strong></p>
-
-  <img src="https://img.shields.io/github/stars/yourusername/document-prototype-laboratory?style=social" alt="Stars">
-
-</div>
+**Simple, clean, and fully functional implementation of the Prototype Design Pattern.**  
+Perfect for learning, interviews, or reference.  
+Star ⭐ if it helped you understand the pattern!
