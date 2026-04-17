@@ -6,6 +6,8 @@ This repository demonstrates the **Prototype Design Pattern** by implementing th
 
 ## 📋 Task Implemented
 
+![Prototype Pattern UML Diagram](https://github.com/JLNerecina/Prototype_Pattern/blob/main/Document%20Prototype%20Design%20Pattern.png)
+
 The program creates a **Document Registry** that holds three prototype objects:
 - `PdfDocument`
 - `TextDocument`
